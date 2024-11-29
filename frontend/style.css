@@ -1,0 +1,130 @@
+#sidebar-wrapper {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #343a40;
+    position: fixed;
+}
+
+.sidebar-heading {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: #fff;
+}
+
+.list-group-item {
+    transition: background-color 0.3s ease;
+    padding: 15px;
+}
+
+.list-group-item:hover {
+    background-color: #495057;
+}
+
+.list-group-item i {
+    margin-right: 10px;
+}
+
+#page-content-wrapper {
+    padding: 2rem;
+    margin-left: 250px;
+}
+
+#page-content-wrapper h1 {
+    font-weight: bold;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+#page-content-wrapper p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+#page-content-wrapper {
+    transition: all 0.4s ease;
+    padding: 2rem;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin: 15px auto;
+}
+
+.card-body {
+    text-align: center;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px;
+}
+
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: -250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 0;
+    width: 100%;
+}
+
+#page-content-wrapper {
+    width: calc(100% - 250px); /* Ajuste dinámico del ancho, restando el ancho del sidebar */
+    margin-left: 250px; /* Dejar espacio al sidebar */
+    overflow-x: hidden; /* Prevenir el desbordamiento horizontal */
+}
+
+.loading-screen {
+    margin-top: 100px;
+    color: #007bff;
+    animation: fadeIn 2s;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+

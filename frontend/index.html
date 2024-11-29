@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Super Copa de Guatemala</title>
+    
+    <!-- Bootstrap CSS desde CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Archivo CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white">Super Copa de Guatemala</div>
+            <div class="list-group list-group-flush">
+                <a href="#" id="view-dashboard" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#" id="register-team" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-futbol"></i> Registrar Equipo
+                </a>
+                <a href="#" id="register-stadium" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-university"></i> Registrar Estadio
+                </a>
+                <a href="#" id="view-settings" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-cog"></i> Ajustes
+                </a>
+                <a href="#" id="view-tournament-history" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-history"></i> Historial de Torneos
+                </a>                
+                <!-- Opciones adicionales del estado "después del torneo" -->
+                <a href="#" id="enter-results" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-edit"></i> Ingresar Resultados
+                </a>                
+                <a href="#" id="view-schedule" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-calendar-alt"></i> Ver Calendario
+                </a>                
+                <a href="#" id="view-standings" class="list-group-item list-group-item-action bg-dark text-white d-none">
+                    <i class="fas fa-trophy"></i> Tabla de Posiciones
+                </a>
+                <a href="#" id="view-team-stats" class="list-group-item list-group-item-action bg-dark text-white">
+                    <i class="fas fa-chart-line"></i> Estadísticas de Equipos
+                </a>
+                <a href="#" id="finalizar-torneo" class="list-group-item list-group-item-action bg-dark text-white d-none">
+                    <i class="fas fa-flag-checkered"></i> Finalizar Torneo
+                </a>                               
+            </div>            
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h3 class="ml-3">Super Copa de Guatemala</h3>
+            </nav>           
+
+            <div class="container-fluid mt-4">
+                <div id="content" class="container">
+                    <h1>Bienvenido al Sistema de la Super Copa de Guatemala</h1>
+                    <p>Selecciona una opción del menú para empezar.</p>
+                
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Equipos Registrados</h5>
+                                    <p class="card-text">Consulta y administra todos los equipos que participan en el torneo.</p>
+                                    <a href="#" id="view-teams" class="btn btn-primary">Ver Equipos</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Estadios Registrados</h5>
+                                    <p class="card-text">Gestiona los estadios en donde se jugarán los partidos.</p>
+                                    <a href="#" id="view-stadiums" class="btn btn-primary">Ver Estadios</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card mt-4">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Sorteo del Torneo</h5>
+                                    <p class="card-text">Genera los partidos y el calendario para el torneo.</p>
+                                    <button id="draw-tournament" class="btn btn-success">Comenzar Sorteo</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tarjeta para el próximo partido -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body" id="proximo-partido-container">
+                                    <h5 class="card-title">Próximo Partido</h5>
+                                    <p class="card-text">Cargando el próximo enfrentamiento programado...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tarjeta para las mejores posiciones -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body" id="mejores-posiciones-container">
+                                    <h5 class="card-title">Mejores Posiciones</h5>
+                                    <p class="card-text">Cargando los equipos con mejor desempeño en el torneo...</p>
+                                </div>
+                            </div>
+                        </div>                                                
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <!-- Modal de Confirmación para Finalizar el Torneo -->
+        <div id="finalizarTorneoModal" class="modal fade" tabindex="-1" aria-labelledby="finalizarTorneoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="finalizarTorneoModalLabel">Finalizar Torneo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>¿Estás seguro de que deseas finalizar el torneo?</h4>
+                        <p>Esta acción no se puede deshacer y toda la información se archivará.</p>
+                        <img id="trophyImage" src="" alt="Trophy" class="img-fluid my-3" style="width: 100px;">
+                        <p>¡Gracias por acompañarnos en este increíble viaje!</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarFinalizacion">Cancelar</button>
+                        <button type="button" class="btn btn-success" id="confirmarFinalizacion">Finalizar Torneo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery y Bootstrap JS desde CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Archivo JavaScript personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
